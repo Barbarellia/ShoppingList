@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Shopping List</title>
+   <link rel="stylesheet" href="style.css" />
+  <h1>Projekt zaliczeniowy realizujący framework Vue.js</h1>
+</head>
+<body>
+<div id="app" class="container">
+  <h2>{{ title }}</h2>
+  <div class="input-group">
+    <input v-model="newItem" @keyup.enter="addItem" placeholder="Dodaj produkt" type="text"
+           class="form-control">
+    <span class="input-group-btn">
+      <button @click="addItem" class="btn btn-default" type="button">Dodaj!</button>
+    </span>
+  </div>
+  <ul>
+    <li v-for="item in items" :class="{ 'removed': item.checked }">
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" v-model="item.checked"> {{ item.text }}
+        </label>
+      </div>
+    </li>
+  </ul>
+  <div class="footer">
+    <hr/>
+    <em>Zmień nazwę listy...   </em>
+    <input v-model="title"/>
+    <div class="stopka">Barbara Szweda, Politechnika Śląska, 2019</div>
+  </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.3/vue.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
